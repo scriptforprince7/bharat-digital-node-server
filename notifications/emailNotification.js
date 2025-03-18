@@ -1,7 +1,7 @@
 const nodemailer = require('nodemailer');
 require('dotenv').config();
 
-const sendEmailNotification = (order, productName) => {
+const sendEmailNotification = (order) => {
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -10,11 +10,20 @@ const sendEmailNotification = (order, productName) => {
     },
   });
 
+  const productList = order.productDetails
+    .map(
+      (item, index) =>
+        `${index + 1}. ${item.name} - ${item.quantity} x ₹${item.price} = ₹${item.total}`
+    )
+    .join("\n");
+
   const mailOptions = {
     from: process.env.EMAIL_USER,
-    to: 'scriptforprince@gmail.com',
+    to: order.email,
     subject: 'Order Confirmation',
-    text: `Your order for ${order.quantity} x ${productName} has been placed successfully. Total price: ₹${order.total_price}.`,
+    text: `Your order has been placed successfully!\n\nProducts:\n${productList}\n\nTotal Price: ₹${order.totalPrice.toFixed(
+      2
+    )}\n\nThank you for shopping with us!`,
   };
 
   transporter.sendMail(mailOptions, (error, info) => {
@@ -27,3 +36,4 @@ const sendEmailNotification = (order, productName) => {
 };
 
 module.exports = { sendEmailNotification };
+
