@@ -74,13 +74,13 @@ $ docker-compose up --build
 
 ### 4. API Access
 Access the APIs:
-- Django Backend: `http://localhost:8000/api/products`
+- Django Backend: `https://bharat-digital-backend.onrender.com/api/products`
 - Node.js Backend: `http://localhost:5000/api/orders`
 
 ### 5. Test JWT Authentication
 For Django API, obtain a token:
 ```bash
-$ curl -X POST -d "username=user&password=pass" http://localhost:8000/api/token/
+$ curl -X POST -d "username=user&password=pass" https://bharat-digital-backend.onrender.com/api/token/
 ```
 Use the token in the `Authorization` header:
 ```

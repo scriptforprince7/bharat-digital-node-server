@@ -20,7 +20,7 @@ router.post('/orders', async (req, res) => {
 
     for (const item of products) {
       const productResponse = await axios.get(
-        `http://localhost:8000/api/products/${item.product_id}/`,
+        `https://bharat-digital-backend.onrender.com/api/products/${item.product_id}/`,
         {
           headers: { Authorization: `Bearer ${process.env.DJANGO_TOKEN}` },
         }
