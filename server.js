@@ -14,7 +14,9 @@ const allowedOrigins = [
   "http://localhost:8000/",
   "http://localhost:8000",
   "http://localhost:5000/",
-  "http://localhost:5000"
+  "http://localhost:5000",
+  "https://bharat-digital-frontend-react.vercel.app/",
+  "https://bharat-digital-frontend-react.vercel.app"
 ];
 
 const corsOptions = {
